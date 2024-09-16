@@ -1,25 +1,30 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Home from './components/Home';
+import About from './components/About';
+import DoctorList from './components/DoctorList';
+import AddDoctor from './components/AddDoctor';
+import EditDoctor from './components/EditDoctor.js';
+import DeleteDoctor from './components/DeleteDoctor.js';
+import TopNav from './components/TopNav';
 import './App.css';
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <TopNav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Home" element={<Home />} />
+        <Route path="/About" element={<About />} />
+        <Route path="/DoctorList" element={<DoctorList />} />
+        <Route path="/AddDoctor" element={<AddDoctor />} />
+        <Route path="/EditDoctor/:id" element={<EditDoctor />} />
+        <Route path="/DeleteDoctor/:id" element={<DeleteDoctor />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
